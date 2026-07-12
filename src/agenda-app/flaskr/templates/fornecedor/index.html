@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h1>{% block title %}Fornecedores{% endblock %}</h1>
+
+{% if g.user %}
+<a class="action" href="{{ url_for('fornecedor.create') }}">Novo</a>
+{% endif %}
+
+{% endblock %}
+
+{% block content %}
+
+{% for fornecedor in fornecedores %}
+
+<article class="post">
+
+<header>
+
+<div>
+
+<h1>{{ fornecedor['nome'] }}</h1>
+
+<div class="about">
+Telefone: {{ fornecedor['telefone'] }}
+</div>
+
+<div class="about">
+Serviço: {{ fornecedor['servico'] }}
+</div>
+
+</div>
+
+{% if g.user and g.user['id'] == fornecedor['author_id'] %}
+<a class="action"
+href="{{ url_for('fornecedor.update', id=fornecedor['id']) }}">
+Editar
+</a>
+{% endif %}
+
+</header>
+
+</article>
+
+{% if not loop.last %}
+<hr>
+{% endif %}
+
+{% endfor %}
+
+{% endblock %}

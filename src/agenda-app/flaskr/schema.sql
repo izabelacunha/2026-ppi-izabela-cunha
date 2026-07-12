@@ -12,11 +12,7 @@ CREATE TABLE fornecedor (
     author_id INTEGER NOT NULL,
     created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     nome TEXT NOT NULL,
-    empresa TEXT NOT NULL,
-    categoria TEXT NOT NULL,
     telefone TEXT NOT NULL,
-    email TEXT,
-    cidade TEXT,
-    observacoes TEXT,
+    servico TEXT NOT NULL,
     FOREIGN KEY (author_id) REFERENCES user (id)
 );
