@@ -26,4 +26,7 @@ def create_app(test_config=None):
     def hello():
         return 'Olá! Bem-vindo ao Gerenciador de Fornecedores de Eventos!'
 
+    from . import db
+    db.init_app(app)
+
     return app
